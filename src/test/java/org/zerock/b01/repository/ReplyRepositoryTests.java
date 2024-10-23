@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.zerock.b01.domain.Board;
 import org.zerock.b01.domain.Reply;
 
+import java.util.stream.IntStream;
+
 @Log4j2
 @SpringBootTest
 public class ReplyRepositoryTests {
@@ -23,6 +25,7 @@ public class ReplyRepositoryTests {
     public void testInsert() {
 
         //실제 데이터베이스에 존재하는 bno 값으로 테스트
+       // IntStream.rangeClosed(1,100).forEach(i -> { // 1부터 100까지의 범위를 갖는 스트림 생성
         Long bno = 100L;
 
         Board board = Board.builder().bno(bno).build();
@@ -36,6 +39,7 @@ public class ReplyRepositoryTests {
         replyRepository.save(reply);
 
         log.info(reply);
+       // });
 
     }
     @Transactional

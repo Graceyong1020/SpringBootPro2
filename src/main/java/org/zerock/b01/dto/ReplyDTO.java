@@ -15,12 +15,18 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class ReplyDTO {
 
-    @NotNull
+
     private Long rno;
+    @NotNull
+    private Long bno;
     @NotEmpty
     private String replyText;
     @NotEmpty
     private String replyer;
 
-    private LocalDateTime regDate, modDate;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime regDate;
+
+    @JsonIgnore //json으로 변환시 제외
+    private LocalDateTime modDate;
 }
